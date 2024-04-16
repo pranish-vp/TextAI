@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import textaiIcon from './images/textai.png';
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -40,24 +41,44 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TextAI</h1>
-      <textarea
-        className='Textarea'
-        placeholder="Enter text..."
-        value={inputText}
-        onChange={handleInputChange}
-      />
+
+      <div className="Containericon">
+        <img src={textaiIcon} alt="Icon" class="icon" />
+        <h1 className='Title'>TextAI</h1>
+      </div>
+
+
+      <div className='Content'>
+
+        <div className='InputSection'>
+          <h2 className='Label'>Input</h2>
+          <textarea
+            className='Textarea'
+            placeholder="Enter text..."
+            value={inputText}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className='ResultSection'>
+          <h2 className='Label2'>Output</h2>
+          <textarea
+            className='Textarea2'
+
+            value={completedText}
+            onChange={() => { }}
+          />
+        </div>
+
+      </div>
+
 
       <div className='Buttons'>
-      <button onClick={handleTextCompletion}>Complete Text</button>
-      <button onClick={handleTextSummarize}>Summarize Text</button>
-      <button onClick={handleTextAnswer}>Answer Question</button>
+        <button onClick={handleTextCompletion}>Complete Text</button>
+        <button onClick={handleTextSummarize}>Summarize Text</button>
+        <button onClick={handleTextAnswer}>Answer Question</button>
       </div>
 
-      <div>
-        <h2>Result :</h2>
-        <p>{completedText}</p>
-      </div>
     </div>
   );
 }

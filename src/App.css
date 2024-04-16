@@ -1,26 +1,49 @@
-.App {
+body {
+  background-color: #2a363b;
+  color: white;
+}
+
+.Content {
+  display: flex;
+  flex-direction: row;
+  padding-left:  20%;
+  padding-right: 20%;
+}
+
+.InputSection, .ResultSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 80%;
+  height: 200px;
+  margin-bottom: 20px;
+  resize: none;
   text-align: center;
-  margin-top: 50px;
+  background-color: #2a363b;
+  border-radius: 20px;
+  color: white;
+  padding: 10px;
 }
 
 
-textarea {
-  margin : auto;
-  width: 50%;
-  height: 100px;
-  margin-bottom: 20px;
+textarea::placeholder {
+  color: rgb(163, 163, 163);
 }
 
 button {
+  font-weight: bold;
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
+  font-size: 14px;
+  background-color: 	#74AA9C;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin: 40px;
 }
 
 .Buttons {
@@ -30,13 +53,22 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #559282;
 }
 
-h2 {
-  margin-top: 40px;
+.Title {
+  font-size: 60px;
 }
 
-p {
-  white-space: pre-wrap;
+
+.Containericon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.icon {
+  width: 100px; 
+  margin-right: 10px; 
+}
+
