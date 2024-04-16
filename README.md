@@ -1,4 +1,5 @@
-#TextAI
+# TextAI
+
 TextAI is a web-based tool that uses the OpenAI API to perform text generation and analysis.
 
 ## Installation
@@ -9,6 +10,7 @@ To run this application locally, follow these steps:
 
    ```bash
    git clone https://github.com/your-username/textai.git
+   ```
 
 ### 2. Navigate to the project directory:
 
