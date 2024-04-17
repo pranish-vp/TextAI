@@ -8,6 +8,7 @@ body {
   flex-direction: row;
   padding-left:  20%;
   padding-right: 20%;
+  padding-bottom: 20px;
 }
 
 .InputSection, .ResultSection {
@@ -43,7 +44,7 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin: 40px;
+  margin: 10px;
 }
 
 .Buttons {
@@ -72,3 +73,6 @@ button:hover {
   margin-right: 10px; 
 }
 
+.Label {
+  font-weight: normal;
+}
