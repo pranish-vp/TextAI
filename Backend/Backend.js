@@ -30,13 +30,13 @@ app.post('/complete', async(req,res)=>{
 app.post('/summarize', async(req,res)=>{
 
   const userPrompt = req.body.userPrompt;
-  const predefinedPrompt = " Summarize this text in short, make it really short and include all points :  ";
+  const predefinedPrompt = " Summarize this text in short, make it really short within 2 lines :  ";
   const prompt = predefinedPrompt + userPrompt;
   console.log(prompt);
   const response= await openai.chat.completions.create({
     model : 'gpt-3.5-turbo',
     messages : [{"role":"user", "content" : prompt}],
-    max_tokens:20,
+    max_tokens:50,
   });
   const completedText= response.choices[0].message.content;
   console.log(completedText);

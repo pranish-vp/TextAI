@@ -61,7 +61,7 @@ function App() {
         </div>
 
         <div className='ResultSection'>
-          <h2 className='Label2'>Output</h2>
+          <h2 className='Label'>Output</h2>
           <textarea
             className='Textarea2'
 
