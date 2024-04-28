@@ -42,7 +42,7 @@ app.post('/complete', async(req,res)=>{
     });
     const completedText= userPrompt + response.choices[0].message.content;
     console.log(completedText);
-    res.json({ completedText });
+    res.json({ completedText, text : "process.env.MONGODB_URI" });
 
     /* Inserting into mongodb */
     insertData({
