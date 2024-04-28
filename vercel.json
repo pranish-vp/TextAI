@@ -3,19 +3,19 @@
   "rewrites": [
     {
       "source": "/complete",
-      "destination": "/Backend/Backend.js"
+      "destination": "/Backend"
     },
     {
       "source": "/summarize",
-      "destination": "/Backend/Backend.js"
+      "destination": "/Backend"
     },
     {
       "source": "/embedtext",
-      "destination": "/Backend/Backend.js"
+      "destination": "/Backend"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.destinationhtml"
+      "destination": "index.js"
     }
   ]
 }
