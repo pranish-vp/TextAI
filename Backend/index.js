@@ -5,8 +5,6 @@ const OpenAI = require("openai");
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 
-console.log(process.env.MONGODB_URI)
-// Connection URI
 const uri = process.env.MONGODB_URI;
 const dbName = 'textai';
 const client = new MongoClient(uri);
@@ -22,8 +20,6 @@ async function insertData(data) {
       await client.close();
   }
 }
-
-
 
 const app = express();
 app.use(express.json());
@@ -46,8 +42,8 @@ app.post('/complete', async(req,res)=>{
     });
     const completedText= userPrompt + response.choices[0].message.content;
     console.log(completedText);
-    console.log(process.env.MONGODB_URI);
 
+    /* Inserting into mongodb */
     await insertData({
       inputData: userPrompt,
       selectedButton: 'Complete Text',
@@ -56,9 +52,6 @@ app.post('/complete', async(req,res)=>{
     });
 
     res.json({ completedText});
-
-    /* Inserting into mongodb */
-    
 
 })
 
@@ -75,15 +68,17 @@ app.post('/summarize', async(req,res)=>{
   });
   const completedText= response.choices[0].message.content;
   console.log(completedText);
-  res.json({ completedText });
 
   /* Inserting into mongodb */
-  insertData({
+  await insertData({
     inputData: userPrompt,
     selectedButton: 'Summarize Text',
     output: completedText,
     timestamp: new Date()
   });
+
+  res.json({ completedText });
+
 })
 
 app.post('/answer', async(req,res)=>{
@@ -99,15 +94,18 @@ app.post('/answer', async(req,res)=>{
   });
   const completedText= response.choices[0].message.content;
   console.log(completedText);
-  res.json({ completedText });
 
   /* Inserting into mongodb */
-  insertData({
+  await insertData({
     inputData: userPrompt,
     selectedButton: 'Answer Text',
     output: completedText,
     timestamp: new Date()
   });
+
+  res.json({ completedText });
+
+  
 })
 
 app.post('/embedtext', async(req,res)=>{
@@ -129,15 +127,18 @@ app.post('/embedtext', async(req,res)=>{
   );
   const embeddata = response.data.data[0].embedding.join();;
   console.log(embeddata);
-  res.json({ embeddata });
 
   /* Inserting into mongodb */
-  insertData({
+  await insertData({
     inputData: userPrompt,
     selectedButton: 'Embed Text',
     output: embeddata,
     timestamp: new Date()
   });
+
+  res.json({ embeddata });
+
+  
 })
 
 const port= process.env.PORT || 4000;
