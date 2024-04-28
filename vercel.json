@@ -1,21 +1,18 @@
 {
-  "version": 2,
-  "rewrites": [
-    {
-      "source": "/complete",
-      "destination": "/Backend"
-    },
-    {
-      "source": "/summarize",
-      "destination": "/Backend"
-    },
-    {
-      "source": "/embedtext",
-      "destination": "/Backend"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "index.js"
-    }
-  ]
-}
+    "version": 2,
+    "routes": [
+      { "handle": "filesystem" },
+      {
+        "src": "/(complete|summarize|answer|embedtext)",
+        "dest": "/backend/index.js"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "/backend/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/frontend/index.html"
+      }
+    ]
+  }
