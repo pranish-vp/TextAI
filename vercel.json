@@ -2,20 +2,20 @@
   "version": 2,
   "rewrites": [
     {
-      "src": "/complete",
-      "dest": "/Backend/Backend.js"
+      "source": "/complete",
+      "destination": "/Backend/Backend.js"
     },
     {
-      "src": "/summarize",
-      "dest": "/Backend/Backend.js"
+      "source": "/summarize",
+      "destination": "/Backend/Backend.js"
     },
     {
-      "src": "/embedtext",
-      "dest": "/Backend/Backend.js"
+      "source": "/embedtext",
+      "destination": "/Backend/Backend.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.destinationhtml"
     }
   ]
 }
