@@ -12,14 +12,18 @@ const dbName = 'textai';
 const client = new MongoClient(uri);
 async function insertData(data) {
   try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('history');
-    await collection.insertOne(data);
+      await client.connect();
+      const db = client.db(dbName);
+      const collection = db.collection('history');
+      await collection.insertOne(data);
+  } catch (error) {
+      console.error('Error inserting data into MongoDB:', error);
   } finally {
-    await client.close();
+      await client.close();
   }
 }
+
+
 
 const app = express();
 app.use(express.json());
@@ -44,7 +48,7 @@ app.post('/complete', async(req,res)=>{
     console.log(completedText);
     console.log(process.env.MONGODB_URI);
 
-    insertData({
+    await insertData({
       inputData: userPrompt,
       selectedButton: 'Complete Text',
       output: completedText,
