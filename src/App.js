@@ -13,7 +13,7 @@ function App() {
 
   const handleTextCompletion = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/complete', { userPrompt : inputText });
+      const response = await axios.post('https://text-ai-backend.app//complete', { userPrompt : inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error completing text:', error);
@@ -22,7 +22,7 @@ function App() {
 
   const handleTextSummarize = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/summarize', { userPrompt : inputText });
+      const response = await axios.post('https://text-ai-backend.app//summarize', { userPrompt : inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error summarizing text:', error);
@@ -31,7 +31,7 @@ function App() {
 
   const handleTextAnswer = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/answer', { userPrompt : inputText });
+      const response = await axios.post('https://text-ai-backend.app//answer', { userPrompt : inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error answering text:', error);
@@ -40,7 +40,7 @@ function App() {
 
   const textEmbedding = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/embedtext', { userPrompt : inputText });
+      const response = await axios.post('https://text-ai-backend.app//embedtext', { userPrompt : inputText });
       setCompletedText(response.data.embeddata);
     } catch (error) {
       console.error('Error answering text:', error);
