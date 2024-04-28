@@ -5,8 +5,9 @@ const OpenAI = require("openai");
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 
+console.log(process.env.MONGODB_URI)
 // Connection URI
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGODB_URI;
 const dbName = 'textai';
 const client = new MongoClient(uri);
 async function insertData(data) {
