@@ -38,6 +38,15 @@ function App() {
     }
   };
 
+  const textEmbedding = async () => {
+    try {
+      const response = await axios.post('http://localhost:4000/embedtext', { userPrompt : inputText });
+      setCompletedText(response.data.embeddata);
+    } catch (error) {
+      console.error('Error answering text:', error);
+    }
+  };
+
 
   return (
     <div className="App">
@@ -77,6 +86,7 @@ function App() {
         <button onClick={handleTextCompletion}>Complete Text</button>
         <button onClick={handleTextSummarize}>Summarize Text</button>
         <button onClick={handleTextAnswer}>Answer Question</button>
+        <button onClick={textEmbedding}>Embed Text</button>
       </div>
 
     </div>
