@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
       "src": "/complete",
-      "dest": "/backend/Backend.js"
+      "dest": "/Backend/Backend.js"
     },
     {
       "src": "/summarize",
-      "dest": "/backend/Backend.js"
+      "dest": "/Backend/Backend.js"
     },
     {
       "src": "/embedtext",
-      "dest": "/backend/Backend.js"
+      "dest": "/Backend/Backend.js"
     },
     {
       "src": "/(.*)",
