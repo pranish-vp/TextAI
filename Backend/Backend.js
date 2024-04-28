@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require('cors');
 require("dotenv").config();
 const OpenAI = require("openai");
+const axios = require('axios');
 
 const app = express();
 app.use(express.json());
@@ -14,7 +15,7 @@ const openai = new OpenAI({
 app.post('/complete', async(req,res)=>{
 
     const userPrompt = req.body.userPrompt;
-    const predefinedPrompt = " Complete this text by including this text and adding aditional required text at the end, only add the required text, don't make up words :  ";
+    const predefinedPrompt = "Complete this text by including this text and adding aditional required text at the end, only add the required text, don't make up words :  ";
     const prompt = predefinedPrompt + userPrompt;
     console.log(prompt);
     const response= await openai.chat.completions.create({
@@ -30,7 +31,7 @@ app.post('/complete', async(req,res)=>{
 app.post('/summarize', async(req,res)=>{
 
   const userPrompt = req.body.userPrompt;
-  const predefinedPrompt = " Summarize this text in short, make it really short within 2 lines :  ";
+  const predefinedPrompt = " Summarize this text in short, make it really short within single line :  ";
   const prompt = predefinedPrompt + userPrompt;
   console.log(prompt);
   const response= await openai.chat.completions.create({
@@ -57,6 +58,28 @@ app.post('/answer', async(req,res)=>{
   const completedText= response.choices[0].message.content;
   console.log(completedText);
   res.json({ completedText });
+})
+
+app.post('/embedtext', async(req,res)=>{
+
+  const userPrompt = req.body.userPrompt;
+  console.log(userPrompt);
+  const response = await axios.post(
+    'https://api.openai.com/v1/embeddings',
+    {
+      "input": userPrompt,
+      "model": "text-embedding-3-small"
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPEN_AI_KEY}`
+      }
+    }
+  );
+  const embeddata = response.data.data[0].embedding;
+  console.log(embeddata);
+  res.json({ embeddata });
 })
 
 const port= process.env.PORT || 4000;
