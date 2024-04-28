@@ -1,18 +1,1 @@
-{
-    "version": 2,
-    "routes": [
-      { "handle": "filesystem" },
-      {
-        "src": "/(complete|summarize|answer|embedtext)",
-        "dest": "/backend/index.js"
-      },
-      {
-        "src": "/api/(.*)",
-        "dest": "/backend/index.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/frontend/index.html"
-      }
-    ]
-  }
+{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/Backend" }] }
