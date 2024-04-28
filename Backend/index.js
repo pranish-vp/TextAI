@@ -42,15 +42,18 @@ app.post('/complete', async(req,res)=>{
     });
     const completedText= userPrompt + response.choices[0].message.content;
     console.log(completedText);
-    res.json({ completedText});
 
-    /* Inserting into mongodb */
     insertData({
       inputData: userPrompt,
       selectedButton: 'Complete Text',
       output: completedText,
       timestamp: new Date()
     });
+
+    res.json({ completedText});
+
+    /* Inserting into mongodb */
+    
 
 })
 
