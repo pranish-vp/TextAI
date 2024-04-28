@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/complete",
+      "dest": "/backend/Backend.js"
+    },
+    {
+      "src": "/summarize",
+      "dest": "/backend/Backend.js"
+    },
+    {
+      "src": "/embedtext",
+      "dest": "/backend/Backend.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
