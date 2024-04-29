@@ -1,0 +1,78 @@
+body {
+    background-color: #2a363b;
+    color: white;
+  }
+  
+  .Content {
+    display: flex;
+    flex-direction: row;
+    padding-left:  20%;
+    padding-right: 20%;
+    padding-bottom: 20px;
+  }
+  
+  .InputSection, .ResultSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  textarea {
+    width: 80%;
+    height: 200px;
+    margin-bottom: 20px;
+    resize: none;
+    text-align: center;
+    background-color: #2a363b;
+    border-radius: 20px;
+    color: white;
+    padding: 10px;
+  }
+  
+  
+  textarea::placeholder {
+    color: rgb(163, 163, 163);
+  }
+  
+  button {
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: 	#74AA9C;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button:hover {
+    background-color: #559282;
+  }
+  
+  .Title {
+    font-size: 60px;
+  }
+  
+  
+  .Containericon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon {
+    width: 100px; 
+    margin-right: 10px; 
+  }
+  
+  .Label {
+    font-weight: normal;
+  }
