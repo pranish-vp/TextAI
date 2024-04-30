@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../Signin.css';
 import textaiIcon from '../images/textai.png';
-
+import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Signin() {
-    /* useEffect(()=>{
-        setValue(localStorage.getItem("email"))
-    }, []); */
+    const navigate = useNavigate();
+
+    const {googleSignIn, user} = UserAuth();
+    const handleGoogleSignIn = async () => {
+        try{
+            await googleSignIn();
+
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {   
+        if (user != null) {
+            navigate('/Home');
+        }
+    }, [user]);
     
     return (
         <>
@@ -20,7 +35,7 @@ function Signin() {
                 <div className='login-container'>
                     <h3 className='center-text'>Log In</h3>
                     <div className='center-btn'>
-                        <button className='login-button'>Sign in with Google</button>
+                        <button className='login-button' onClick={handleGoogleSignIn}>Sign in with Google</button>
                     </div>
                 </div>
             </div>

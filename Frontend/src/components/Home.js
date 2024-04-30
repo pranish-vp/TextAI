@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import '../Home.css';
 import axios from 'axios';
-import textaiIcon from '../images/textai.png';
-import { useNavigate } from 'react-router-dom';
+import Navbar from "./Navbar";
 
 function App() {
-
-  const navigate = useNavigate();
   const [inputText, setInputText] = useState('');
   const [completedText, setCompletedText] = useState('');
 
@@ -16,7 +13,7 @@ function App() {
 
   const handleTextCompletion = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/complete', { userPrompt : inputText });
+      const response = await axios.post('https://backend-textai.vercel.app/complete', { userPrompt: inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error completing text:', error);
@@ -25,7 +22,7 @@ function App() {
 
   const handleTextSummarize = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/summarize', { userPrompt : inputText });
+      const response = await axios.post('https://backend-textai.vercel.app/summarize', { userPrompt: inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error summarizing text:', error);
@@ -34,7 +31,7 @@ function App() {
 
   const handleTextAnswer = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/answer', { userPrompt : inputText });
+      const response = await axios.post('https://backend-textai.vercel.app/answer', { userPrompt: inputText });
       setCompletedText(response.data.completedText);
     } catch (error) {
       console.error('Error answering text:', error);
@@ -43,60 +40,53 @@ function App() {
 
   const textEmbedding = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/embedtext', { userPrompt : inputText });
+      const response = await axios.post('https://backend-textai.vercel.app/embedtext', { userPrompt: inputText });
       setCompletedText(response.data.embeddata);
     } catch (error) {
       console.error('Error answering text:', error);
     }
   };
 
-  const logout = () => {
-    localStorage.clear();
-    navigate("/");
-  }
+
 
   return (
-    <div className="App">
+    <>
+      <Navbar  />
+      <div className="App">
 
-      <div className="Containericon">
-        <img src={textaiIcon} alt="Icon" className="icon" />
-        <h1 className='Title'>TextAI</h1>
-      </div>
+        <div className='Content'>
 
+          <div className='InputSection'>
+            <h2 className='Label'>Input</h2>
+            <textarea
+              className='Textarea'
+              placeholder="Enter text..."
+              value={inputText}
+              onChange={handleInputChange}
+            />
+          </div>
 
-      <div className='Content'>
+          <div className='ResultSection'>
+            <h2 className='Label'>Output</h2>
+            <textarea
+              className='Textarea2'
 
-        <div className='InputSection'>
-          <h2 className='Label'>Input</h2>
-          <textarea
-            className='Textarea'
-            placeholder="Enter text..."
-            value={inputText}
-            onChange={handleInputChange}
-          />
+              value={completedText}
+              onChange={() => { }}
+            />
+          </div>
+
         </div>
 
-        <div className='ResultSection'>
-          <h2 className='Label'>Output</h2>
-          <textarea
-            className='Textarea2'
 
-            value={completedText}
-            onChange={() => { }}
-          />
+        <div className='Buttons'>
+          <button onClick={handleTextCompletion} className='page-buttons' >Complete Text</button>
+          <button onClick={handleTextSummarize} className='page-buttons'>Summarize Text</button>
+          <button onClick={handleTextAnswer} className='page-buttons'>Answer Question</button>
+          <button onClick={textEmbedding} className='page-buttons'>Embed Text</button>
         </div>
-
       </div>
-
-
-      <div className='Buttons'>
-        <button onClick={handleTextCompletion}>Complete Text</button>
-        <button onClick={handleTextSummarize}>Summarize Text</button>
-        <button onClick={handleTextAnswer}>Answer Question</button>
-        <button onClick={textEmbedding}>Embed Text</button>
-      </div>
-      <button onClick={logout}>Log out</button>
-    </div>
+    </>
   );
 }
 
