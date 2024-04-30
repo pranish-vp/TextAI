@@ -32,12 +32,10 @@ const openai = new OpenAI({
 app.post('/complete', async(req,res)=>{
 
     const userPrompt = req.body.userPrompt;
-    const predefinedPrompt = "Complete this text by including this text and adding aditional required text at the end, only add the required text, don't make up words :  ";
-    const prompt = predefinedPrompt + userPrompt;
-    console.log(prompt);
     const response= await openai.chat.completions.create({
       model : 'gpt-3.5-turbo',
-      messages : [{"role":"user", "content" : prompt}],
+      messages : [{"role": "system", "content": "Complete this text by including this text and adding aditional required text at the end, only add the required text, don't make up words"},
+                  {"role":"user", "content" : userPrompt}],
       max_tokens:25,
     });
     const completedText= userPrompt + response.choices[0].message.content;
@@ -58,12 +56,10 @@ app.post('/complete', async(req,res)=>{
 app.post('/summarize', async(req,res)=>{
 
   const userPrompt = req.body.userPrompt;
-  const predefinedPrompt = " Summarize this text in short, make it really short within single line :  ";
-  const prompt = predefinedPrompt + userPrompt;
-  console.log(prompt);
   const response= await openai.chat.completions.create({
     model : 'gpt-3.5-turbo',
-    messages : [{"role":"user", "content" : prompt}],
+    messages : [{"role": "system", "content": "Summarize this text in short, make it really short within single line"},
+                {"role":"user", "content" : userPrompt}],
     max_tokens:50,
   });
   const completedText= response.choices[0].message.content;
@@ -84,12 +80,10 @@ app.post('/summarize', async(req,res)=>{
 app.post('/answer', async(req,res)=>{
 
   const userPrompt = req.body.userPrompt;
-  const predefinedPrompt = " Answer this question with a short answer possible :  ";
-  const prompt = predefinedPrompt + userPrompt;
-  console.log(prompt);
   const response= await openai.chat.completions.create({
     model : 'gpt-3.5-turbo',
-    messages : [{"role":"user", "content" : prompt}],
+    messages : [{"role": "system", "content": "Answer this question with a short answer possible"},
+                {"role":"user", "content" : userPrompt}],
     max_tokens:20,
   });
   const completedText= response.choices[0].message.content;
