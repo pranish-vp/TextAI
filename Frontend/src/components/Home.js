@@ -5,6 +5,7 @@ import textaiIcon from '../images/textai.png';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
+
   const navigate = useNavigate();
   const [inputText, setInputText] = useState('');
   const [completedText, setCompletedText] = useState('');
@@ -58,7 +59,7 @@ function App() {
     <div className="App">
 
       <div className="Containericon">
-        <img src={textaiIcon} alt="Icon" class="icon" />
+        <img src={textaiIcon} alt="Icon" className="icon" />
         <h1 className='Title'>TextAI</h1>
       </div>
 
