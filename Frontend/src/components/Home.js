@@ -13,39 +13,13 @@ function App() {
 
   const handleTextCompletion = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/complete', { userPrompt: inputText });
-      setCompletedText(response.data.completedText);
+      const response = await axios.post('http://localhost:4000/complete', { userPrompt: inputText }); //https://backend-textai.vercel.app/complete
+      setCompletedText(response.data.lastResponse);
     } catch (error) {
       console.error('Error completing text:', error);
     }
   };
 
-  const handleTextSummarize = async () => {
-    try {
-      const response = await axios.post('https://backend-textai.vercel.app/summarize', { userPrompt: inputText });
-      setCompletedText(response.data.completedText);
-    } catch (error) {
-      console.error('Error summarizing text:', error);
-    }
-  };
-
-  const handleTextAnswer = async () => {
-    try {
-      const response = await axios.post('https://backend-textai.vercel.app/answer', { userPrompt: inputText });
-      setCompletedText(response.data.completedText);
-    } catch (error) {
-      console.error('Error answering text:', error);
-    }
-  };
-
-  const textEmbedding = async () => {
-    try {
-      const response = await axios.post('https://backend-textai.vercel.app/embedtext', { userPrompt: inputText });
-      setCompletedText(response.data.embeddata);
-    } catch (error) {
-      console.error('Error answering text:', error);
-    }
-  };
 
 
 
@@ -80,10 +54,8 @@ function App() {
 
 
         <div className='Buttons'>
-          <button onClick={handleTextCompletion} className='page-buttons' >Complete Text</button>
-          <button onClick={handleTextSummarize} className='page-buttons'>Summarize Text</button>
-          <button onClick={handleTextAnswer} className='page-buttons'>Answer Question</button>
-          <button onClick={textEmbedding} className='page-buttons'>Embed Text</button>
+          <button onClick={handleTextCompletion} className='page-buttons' >Generate</button>
+
         </div>
       </div>
     </>
