@@ -13,7 +13,7 @@ function App() {
 
   const handleTextCompletion = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/complete', { userPrompt: inputText }); //https://backend-textai.vercel.app/complete
+      const response = await axios.post('https://backend-textai.vercel.app/complete', { userPrompt: inputText }); 
       setCompletedText(response.data.lastResponse);
     } catch (error) {
       console.error('Error completing text:', error);
