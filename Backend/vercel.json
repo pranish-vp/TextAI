@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/ss",
-      "dest": "/semanticsearch.js"
+      "dest": "/ss-api"
     },
     {
       "src": "/(.*)",
