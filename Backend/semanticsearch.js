@@ -46,7 +46,7 @@ async function semanticSearch(userInput){
 
     console.log(queryResponse.matches[1].metadata.id);
     const fsId = queryResponse.matches[1].metadata.id;
-
+    //collect from firestore
     const ref = firestore.collection('data').doc(fsId);
     const doc = await ref.get();
     if (!doc.exists) {
