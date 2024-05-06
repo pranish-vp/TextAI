@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "./semanticsearch.js",
+      "src": "./ss-api/index.js",
       "use": "@vercel/node"
     }
   ],
