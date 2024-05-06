@@ -4,6 +4,8 @@ require("dotenv").config();
 const OpenAI = require("openai");
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
+const { semanticSearch } = require('./semanticsearch');
+
 
 const uri = process.env.MONGODB_URI;
 const dbName = 'textai';
@@ -248,6 +250,12 @@ app.post('/', async (req, res) => {
   res.json({ lastResponse });
 
 })
+
+app.post('/ss', async (req, res) => {
+  const userPrompt = req.body.userPrompt;
+  const msg = await semanticSearch(userPrompt);
+  res.json(msg);
+});
 
 const port = process.env.PORT || 4000;
 

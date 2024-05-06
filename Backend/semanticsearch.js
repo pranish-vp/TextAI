@@ -59,14 +59,5 @@ async function semanticSearch(userInput){
 
 }
 
-app.post('/ss', async (req, res) => {
-    const userPrompt = req.body.userPrompt;
-    const msg = await semanticSearch(userPrompt);
-    res.json(msg);
-});
-
-const port = process.env.PORT || 4000;
-
-app.listen(port, () => console.log(`Server started on port ${port}`));
-module.exports = app;
+module.exports = { semanticSearch };
 
