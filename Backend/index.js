@@ -85,7 +85,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
 
-app.post('/text', async (req, res) => {
+app.post('/', async (req, res) => {
   globembed = null;
 
   const userPrompt = req.body.userPrompt;
