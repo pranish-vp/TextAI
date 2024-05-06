@@ -249,7 +249,7 @@ app.post('/', async (req, res) => {
 
   res.json({ lastResponse });
 
-})
+});
 
 app.post('/ss', async (req, res) => {
   const userPrompt = req.body.userPrompt;
