@@ -5,6 +5,8 @@ const OpenAI = require("openai");
 const axios = require('axios');
 const { MongoClient } = require('mongodb');
 const { semanticSearch } = require('./semanticsearch');
+const { threadOpen } = require('./thread');
+
 
 
 const uri = process.env.MONGODB_URI;
@@ -255,6 +257,14 @@ app.post('/ss', async (req, res) => {
   const userPrompt = req.body.userPrompt;
   const msg = await semanticSearch(userPrompt);
   res.json(msg);
+});
+
+app.post('/serpapi', async (req, res) => {
+  const userPrompt = req.body.userPrompt;
+  const emailid = req.body.emailid;
+  const username = req.body.username;
+  const resp = await threadOpen(userPrompt,emailid);
+  res.json({lastResponse : resp});
 });
 
 const port = process.env.PORT || 4000;

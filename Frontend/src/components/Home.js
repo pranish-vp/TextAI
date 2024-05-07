@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import '../Home.css';
 import axios from 'axios';
 import Navbar from "./Navbar";
+import { UserAuth } from '../context/AuthContext';
+
 
 function App() {
+  const { user } = UserAuth();
   const [inputText, setInputText] = useState('');
   const [completedText, setCompletedText] = useState('');
 
@@ -14,6 +17,15 @@ function App() {
   const handleTextCompletion = async () => {
     try {
       const response = await axios.post('https://backend-textai.vercel.app/', { userPrompt: inputText }); 
+      setCompletedText(response.data.lastResponse);
+    } catch (error) {
+      console.error('Error completing text:', error);
+    }
+  };
+
+  const serpAPI = async () => {
+    try {
+      const response = await axios.post('http://localhost:4000/serpapi', { userPrompt: inputText, username : user?.displayName, emailid : user?.email }); 
       setCompletedText(response.data.lastResponse);
     } catch (error) {
       console.error('Error completing text:', error);
@@ -55,7 +67,7 @@ function App() {
 
         <div className='Buttons'>
           <button onClick={handleTextCompletion} className='page-buttons' >Generate</button>
-
+          <button onClick={serpAPI} className='page-buttons' >Chat</button>
         </div>
       </div>
     </>
