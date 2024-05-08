@@ -116,7 +116,7 @@ async function threadOpen(userPrompt, emailid) {
             );
         }
         while (run.status != 'completed') {
-            /* await new Promise(r => setTimeout(r, 100)); */
+            await new Promise(r => setTimeout(r, 1000));
             run = await openai.beta.threads.runs.retrieve(
                 threadId, run.id);
             console.log(run.status);
