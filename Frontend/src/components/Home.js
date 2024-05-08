@@ -25,7 +25,7 @@ function App() {
 
   const serpAPI = async () => {
     try {
-      const response = await axios.post('https://backend-textai.vercel.app/serpapi', { userPrompt: inputText, username : user?.displayName, emailid : user?.email }); 
+      const response = await axios.post('http://localhost:4000/serpapi', { userPrompt: inputText, username : user?.displayName, emailid : user?.email }); 
       setCompletedText(response.data.lastResponse);
     } catch (error) {
       console.error('Error completing text:', error);

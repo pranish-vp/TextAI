@@ -17,6 +17,7 @@
     "firebase": "^10.11.1",
     "firebase-admin": "^12.1.0",
     "mongodb": "^6.5.0",
-    "openai": "^4.38.5"
+    "openai": "^4.38.5",
+    "serpapi": "^2.1.0"
   }
 }
