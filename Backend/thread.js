@@ -35,8 +35,6 @@ async function searchTrends(args) {
 }
 
 async function threadOpen(userPrompt, emailid) {
-
-
     try {
         var flag = -1;
         var docid;
@@ -88,6 +86,7 @@ async function threadOpen(userPrompt, emailid) {
         }
         const runid = run.id;
         console.log(run.status);
+        console.log(process.env.SERP_API);
         if (run.status == 'requires_action' ) {
             var tooloutputs = [];
             const availableFunctions = {
