@@ -116,17 +116,12 @@ async function threadOpen(userPrompt, emailid) {
                 }
             );
         }
-        try{
         while (run.status != 'completed') {
-            await new Promise(r => setTimeout(r, 100));
+            /* await new Promise(r => setTimeout(r, 100)); */
             run = await openai.beta.threads.runs.retrieve(
                 threadId, run.id);
             console.log(run.status);
         }
-    }
-    catch{
-        return "Response generated, Timeout occured";
-    }
         console.log(run.status);
         const msg = await openai.beta.threads.messages.list(threadId);
         return msg.body.data[0].content[0].text.value;
